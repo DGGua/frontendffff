@@ -1,0 +1,62 @@
+button {
+    font-size: 16px;
+}
+input {
+    font-size: 16px;
+}
+
+body {
+    font-size: 16px;
+    padding: 20px 50px;
+    background-color: rgb(242, 242, 242);
+}
+.button-like {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 0.2rem;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+.button-like svg {
+    margin-left: 0.5em;
+}
+
+.login {
+    display: flex;
+    gap: 1em 1em;
+}
+.login-panel {
+    row-gap: 0.5em;
+    width: 100%;
+}
+
+.middle-panel .text {
+    content: "123123123";
+}
+
+.input-panel {
+    row-gap: 0.5em;
+    width: 100%;
+}
+.input-panel input {
+    padding: 0.5em;
+    border: none;
+}
+.input-panel button {
+    padding: 0.5em;
+    border: none;
+}
+
+.navigator {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    gap: 0.5em;
+}
+.navigator div {
+    width: 100%;
+    background-color: gray;
+    color: white;
+    line-height: 2em;
+}

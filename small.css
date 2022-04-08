@@ -1,0 +1,23 @@
+.login {
+    flex-direction: column;
+    align-items: center;
+}
+.middle-panel div {
+    /* border: 2px gray solid; */
+    width: 3em;
+    height: 2em;
+    text-align: center;
+    border-radius: 50%;
+}
+.middle-panel ::after {
+    line-height: 3em;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -1.5em;
+    content: "或 手动登陆";
+}
+
+.navigator {
+    flex-direction: column;
+}

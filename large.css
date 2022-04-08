@@ -1,0 +1,21 @@
+.middle-panel {
+    display: flex;
+    align-items: center;
+}
+
+.middle-panel div {
+    border: 2px gray solid;
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    border-radius: 50%;
+}
+.middle-panel div::after {
+    width: 3em;
+    line-height: 3em;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: -1.5em;
+    content: "or";
+}
