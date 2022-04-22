@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="table.css">
+
+<h2>用户信息管理</h2>
+<hr>
+<table border="1" id="table">
+    <th>
+    <td>学生姓名</td>
+    <td>学生密码</td>
+    <td>学生邮箱</td>
+    <td>学生生日</td>
+    <td>学生余额</td>
+    <td>操作</td>
+    </th>
+    <tr>
+        <td>2</td>
+        <td>张三</td>
+        <td>*****</td>
+        <td>zhangsan@qq.com</td>
+        <td>2020-02-02</td>
+        <td>200</td>
+        <td>
+            <div class="button-group">
+                <button id="button-edit">编辑</button>
+                <button id="button-delete">删除</button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>张三</td>
+        <td>*****</td>
+        <td>zhangsan@qq.com</td>
+        <td>2020-02-02</td>
+        <td>200</td>
+        <td>
+            <div class="button-group">
+                <button id="button-edit">编辑</button>
+                <button id="button-delete">删除</button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>张三</td>
+        <td>*****</td>
+        <td>zhangsan@qq.com</td>
+        <td>2020-02-02</td>
+        <td>200</td>
+        <td>
+            <div class="button-group">
+                <button id="button-edit">编辑</button>
+                <button id="button-delete">删除</button>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script src="global.js"></script>
+<script>
+fetch("/user/list").then(res => {
+        res.data.forEach((element, index) => {
+            
+        document.getElementById("table").appendChild(
+            ` <tr>
+            <td>${index+1}</td>
+            <td>${element.username}</td>
+            <td>${element.userpwd}</td>
+            <td>${element.email}</td>
+            <td>${new Date(Date.parse(element.birthday)).toDateString()}</td>
+            <td>${element.balance}</td>
+            <td>
+                <div class="button-group">
+                    <button id="button-edit">编辑</button>
+                    <button id="button-delete">删除</button>
+                </div>
+            </td>
+        </tr>
+        `
+        )
+    })
+})
+</script>

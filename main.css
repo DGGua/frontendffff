@@ -1,0 +1,46 @@
+li {
+    cursor: pointer;
+}
+
+body {
+    height: 100vh;
+}
+header {
+    color: white;
+    font-weight: 1000;
+    font-size: 40px;
+}
+main {
+    display: flex;
+    height: 100%;
+}
+
+aside {
+    position: float;
+    width: 30%;
+    max-width: 300px;
+}
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+}
+footer {
+    text-align: center;
+}
+.background-1 {
+    background-color: orange;
+}
+.background-1-lite {
+    background-color: yellow;
+}
+.background-2 {
+    background-color: blue;
+}
+
+.background-2-lite {
+    background-color: aquamarine;
+}

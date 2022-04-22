@@ -54,7 +54,7 @@ body {
     display: flex;
     gap: 0.5em;
 }
-.navigator div {
+.navigator * {
     width: 100%;
     background-color: gray;
     color: white;

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="common.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width:800px)"
+      type="text/css"
+      href="smallmain.css"
+    />
+  </head>
+
+  <body>
+    <header class="background-1">web技术课程演示系统</header>
+    <main>
+      <aside class="background-1-lite">
+        <ul>
+          <li id="frame-main">首页</li>
+          <hr />
+          <li id="blue">深蓝</li>
+          <li id="yellow">橘黄</li>
+          <hr />
+          <li id="frame-user">用户管理</li>
+          <li>文章管理</li>
+        </ul>
+      </aside>
+      <iframe src="framemain.html" frameborder="0"></iframe>
+    </main>
+    <footer class="background-1">李东哲 2022</footer>
+  </body>
+  <script>
+    document.getElementById("blue").addEventListener("click", () => {
+      Array.from(document.getElementsByClassName("background-1")).forEach(
+        (item) => {
+          item.className = item.className.replace(
+            "background-1",
+            "background-2"
+          );
+        }
+      );
+      Array.from(document.getElementsByClassName("background-1-lite")).forEach(
+        (item) => {
+          item.className = item.className.replace(
+            "background-1",
+            "background-2"
+          );
+        }
+      );
+    });
+
+    document.getElementById("yellow").addEventListener("click", () => {
+      Array.from(document.getElementsByClassName("background-2")).forEach(
+        (item) => {
+          item.className = item.className.replace(
+            "background-2",
+            "background-1"
+          );
+        }
+      );
+      Array.from(document.getElementsByClassName("background-2-lite")).forEach(
+        (item) => {
+          item.className = item.className.replace(
+            "background-2",
+            "background-1"
+          );
+        }
+      );
+    });
+
+    document.getElementById("frame-main").addEventListener("click", () => {
+      document
+        .getElementsByTagName("iframe")[0]
+        .setAttribute("src", "framemain.html");
+    });
+    document.getElementById("frame-user").addEventListener("click", () => {
+      document
+        .getElementsByTagName("iframe")[0]
+        .setAttribute("src", "table.html");
+    });
+  </script>
+</html>
