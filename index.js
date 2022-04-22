@@ -4,7 +4,7 @@ document.getElementById("button-login").addEventListener("click", () => {
   let data = new URLSearchParams();
   data.append("username", username);
   data.append("pwd", password);
-  fetch(`/user/login`, {
+  fetch(`${prefix}/user/login`, {
     method: "POST",
     data: data,
   }).then((res) => {

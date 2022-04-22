@@ -57,7 +57,7 @@
 
 <script src="global.js"></script>
 <script>
-fetch("/user/list").then(res => {
+fetch(`${prefix}/user/list`).then(res => {
         res.data.forEach((element, index) => {
             
         document.getElementById("table").appendChild(

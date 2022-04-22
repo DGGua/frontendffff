@@ -62,7 +62,7 @@
                 alert("生日不能为空/格式不符")
                 return
             }
-            fetch("/user/register",{
+            fetch(`${prefix}/user/register`,{
               
             })
             window.location.href="/"
@@ -72,7 +72,7 @@
         const pwd = document.getElementById("id").textContent
         const email = document.getElementById("id").textContent
         const birthday= new Date(Date.parse(document.getElementById("id").textContent)).toISOString();
-        fetch("/user/register",{
+        fetch(`${prefix}/user/register`,{
           method:"POST",
           data:{
             name,

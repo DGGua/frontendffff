@@ -9,7 +9,7 @@ document.getElementById("button-change").addEventListener("click", () => {
     alert(`${name} 密码修改成功`);
     window.location.href = "/";
   }
-  fetch("/user/update_user", {
+  fetch(`${prefix}/user/update_user`, {
     method: "PUT",
     data: {
       name,
