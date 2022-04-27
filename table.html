@@ -11,62 +11,20 @@
     <td>学生余额</td>
     <td>操作</td>
     </th>
-    <tr>
-        <td>2</td>
-        <td>张三</td>
-        <td>*****</td>
-        <td>zhangsan@qq.com</td>
-        <td>2020-02-02</td>
-        <td>200</td>
-        <td>
-            <div class="button-group">
-                <button id="button-edit">编辑</button>
-                <button id="button-delete">删除</button>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>张三</td>
-        <td>*****</td>
-        <td>zhangsan@qq.com</td>
-        <td>2020-02-02</td>
-        <td>200</td>
-        <td>
-            <div class="button-group">
-                <button id="button-edit">编辑</button>
-                <button id="button-delete">删除</button>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>张三</td>
-        <td>*****</td>
-        <td>zhangsan@qq.com</td>
-        <td>2020-02-02</td>
-        <td>200</td>
-        <td>
-            <div class="button-group">
-                <button id="button-edit">编辑</button>
-                <button id="button-delete">删除</button>
-            </div>
-        </td>
-    </tr>
 </table>
 
 <script src="global.js"></script>
 <script>
-fetch(`${prefix}/user/list`).then(res => {
-        res.data.forEach((element, index) => {
-            
-        document.getElementById("table").appendChild(
-            ` <tr>
-            <td>${index+1}</td>
+    fetch(`${prefix}/user/list`).then(res => res.json()).then(
+        data => {
+            data.data.forEach((element, index) => {
+                document.getElementById("table").innerHTML+=
+                    ` <tr>
+            <td>${element.userid}</td>
             <td>${element.username}</td>
             <td>${element.userpwd}</td>
-            <td>${element.email}</td>
-            <td>${new Date(Date.parse(element.birthday)).toDateString()}</td>
+            <td>${element.email??""}</td>
+            <td>${new Date(Date(element.birthday)).toDateString()}</td>
             <td>${element.balance}</td>
             <td>
                 <div class="button-group">
@@ -76,7 +34,6 @@ fetch(`${prefix}/user/list`).then(res => {
             </td>
         </tr>
         `
-        )
-    })
-})
+            })
+        })
 </script>

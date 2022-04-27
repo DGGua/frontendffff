@@ -5,9 +5,7 @@ document.getElementById("button-change").addEventListener("click", () => {
   console.log(pas1, pas2);
   if (pas1 != pas2) {
     alert("两次密码不一致");
-  } else {
-    alert(`${name} 密码修改成功`);
-    window.location.href = "/";
+    return;
   }
   fetch(`${prefix}/user/update_user`, {
     method: "PUT",
@@ -16,11 +14,11 @@ document.getElementById("button-change").addEventListener("click", () => {
       pwd: pas1,
     },
   }).then((res) => {
-    if (res.data == "success") {
+    if (res.status == 200) {
       alert("修改成功");
-      window.location.href = "main.html";
+      window.location.href = "index.html";
     } else {
-      alert("Internal Error");
+      alert("Error");
     }
   });
 });

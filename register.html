@@ -1,93 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="common.css" />
-    <link rel="stylesheet" type="text/css" href="index.css" />
-    <link
-      rel="stylesheet"
-      media="screen and (max-width:650px)"
-      type="text/css"
-      href="small.css"
-    />
-    <link
-      rel="stylesheet"
-      media="screen and (min-width:650px)"
-      type="text/css"
-      href="large.css"
-    />
-  </head>
 
-  <body>
-    <h1 class="title">注册</h1>
-      <div class="input-panel flex-col">
-        <input class="button-like" type="text" id="id" placeholder="用户名" />
-        <input class="button-like" type="password" id="password" placeholder="密码" />
-        <input class="button-like" type="text" id="email" placeholder="电子邮箱" />
-        <input class="button-like" type="text" id="time" placeholder="年 - 月 - 日" />
-        <button
-          class="button-like"
-          type="submit"
-          id="button-login"
-          style="
+<head>
+  <link rel="stylesheet" type="text/css" href="common.css" />
+  <link rel="stylesheet" type="text/css" href="index.css" />
+  <link rel="stylesheet" media="screen and (max-width:650px)" type="text/css" href="small.css" />
+  <link rel="stylesheet" media="screen and (min-width:650px)" type="text/css" href="large.css" />
+</head>
+
+<body>
+  <h1 class="title">注册</h1>
+  <div class="input-panel flex-col">
+    <input class="button-like" type="text" id="id" placeholder="用户名" />
+    <input class="button-like" type="password" id="password" placeholder="密码" />
+    <input class="button-like" type="text" id="email" placeholder="电子邮箱" />
+    <input class="button-like" type="text" id="time" placeholder="年 - 月 - 日" />
+    <button class="button-like" type="submit" id="button-login" style="
             background-color: rgb(101, 185, 105);
             color: rgba(255, 255, 255, 0.85);
             justify-content: center;
-          "
-        >
-          确认
-        </button>
-      </div>
-    </section>
-    <section class="navigator">
-      <a href="/">
-        <div>返回登陆界面</div>
-      </a>
-    </section>
+          ">
+      确认
+    </button>
+  </div>
+  </section>
+  <section class="navigator">
+    <a href="index.html">
+      <div>返回登陆界面</div>
+    </a>
+  </section>
   <script src="global.js"></script>
   <script>
-        document.getElementById("button-login").addEventListener("click", ()=>{
-            if(document.getElementById("password").value.length <8){
-                alert("密码长度不得小于八")
-                return
-            }
-            if(document.getElementById("id").value.length ==0){
-                alert("用户名不能为空")
-                return
-            }
-            if(document.getElementById("email").value.search(/^.*@.*\.com$/)==-1){
-                alert("邮箱不能为空/格式不符")
-                return
-            }
-            if(document.getElementById("time").value.search(/^[0-9]*-[0-9]*-[0-9]*$/)){
-                alert("生日不能为空/格式不符")
-                return
-            }
-            fetch(`${prefix}/user/register`,{
-              
-            })
-            window.location.href="/"
+    document.getElementById("button-login").addEventListener("click", () => {
+      if (document.getElementById("password").value.length < 8) {
+        alert("密码长度不得小于八")
+        return
+      }
+      if (document.getElementById("id").value.length == 0) {
+        alert("用户名不能为空")
+        return
+      }
+      if (document.getElementById("email").value.search(/^.*@.*\.com$/) == -1) {
+        alert("邮箱不能为空/格式不符")
+        return
+      }
+      if (document.getElementById("time").value.search(/^[0-9]*-[0-9]*-[0-9]*$/)) {
+        alert("生日不能为空/格式不符")
+        return
+      }
+      const name = document.getElementById("id").value
+      const pwd = document.getElementById("password").value
+      const email = document.getElementById("email").value
+      const birthday = new Date(Date.parse(document.getElementById("time").value)).toISOString();
+      fetch(`${prefix}/user/register`, {
+        method: "POST",
+        data: {
+          name,
+          pwd,
+          email,
+          birthday
+        }
+      }).then(res => {
+        console.log(res)
+        if (res.status == 200) {
+          window.location.href = "index.html";
+        } else {
+          alert("Error");
+        }
+      })
+    })
 
-        })
-        const name = document.getElementById("id").textContent
-        const pwd = document.getElementById("id").textContent
-        const email = document.getElementById("id").textContent
-        const birthday= new Date(Date.parse(document.getElementById("id").textContent)).toISOString();
-        fetch(`${prefix}/user/register`,{
-          method:"POST",
-          data:{
-            name,
-            pwd,
-            email,
-            birthday
-          }
-        }).then(res=>{
-          if (res.data == "success") {
-            window.location.href = "main.html";
-          } else {
-            alert("Internal Error");
-          }
-        })
-    </script>
-  </body>
+  </script>
+</body>
 
 </html>
